@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="vue.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>data nilai</title>
+</head>
+<body>
+    <div id="app">
+
+        <h2 id="data">Data Nilai Mahasiswi</h2>
+        <table>
+            <tr>
+                <td>Masukkan Nama</td>
+                <td>
+                <input type="text" v-model="nama" placeholder="isi nama">
+                <p class="pesan-error" v-if="nama.length < 2">Masukkan Nama</p>
+                </td>              
+                
+            </tr>
+            <tr>
+                <td>Nilai Matematika</td>
+                <td>
+                <input type="number" v-model="matematika" placeholder="isi nilai">
+                <p class="pesan-error" v-if="matematika.length < 2">Masukkan Nilai</p>
+                </td>              
+                
+            </tr>
+
+            <tr>
+                <td>Nilai Fisika</td>
+                <td><input type="number" v-model="fisika" placeholder="Isi Nilai">
+                <p class="pesan-error" v-if="fisika.length < 2">Masukkan Nilai</p>
+                </td></td>
+            </tr>
+            <tr>
+                <td>Nilai Bahasa Indonesia</td>
+                <td><input type="number" v-model="bindo" placeholder="Isi Nilai">
+                <p class="pesan-error" v-if="bindo.length < 2">Masukkan Nilai</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Nilai PKN</td>
+                <td><input type="number" v-model="pkn" placeholder="Isi Nilai">
+                <p class="pesan-error" v-if="pkn.length < 2">Masukkan Nilai</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Nilai Bahasa Inggris</td>
+                <td><input type="number" v-model="binggris" placeholder="Isi Nilai">
+                <p class="pesan-error" v-if="binggris.length < 2">Masukkan Nilai</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Nilai Bahasa Inggris</td>
+                <td><input type="number" v-model="barab" placeholder="Isi Nilai">
+                <p class="pesan-error" v-if="barab.length < 2">Masukkan Nilai</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Nilai Biologi</td>
+                <td><input type="number" v-model="biologi" placeholder="Isi Nilai">
+                <p class="pesan-error" v-if="biologi.length < 2">Masukkan Nilai</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Nilai Agama Islam</td>
+                <td><input type="number" v-model="agamaislam" placeholder="Isi Nilai">
+                <p class="pesan-error" v-if="agamaislam.length < 2">Masukkan Nilai</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Nilai IT</td>
+                <td><input type="number" v-model="it" placeholder="Isi Nilai">
+                <p class="pesan-error" v-if="it.length < 2">Masukkan Nilai</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Nilai Kimia</td>
+                <td><input type="number" v-model="kimia" placeholder="Isi Nilai">
+                <p class="pesan-error" v-if="kimia.length < 2">Masukkan Nilai</p>
+                </td></td></td>
+            </tr>
+
+            <!-- nama -->
+            <tr>
+                <td>Nama Mahasiswa</td>
+                <td>{{nama}}</td>
+            </tr>
+
+            <!-- nilai rata-rata -->
+            <tr>
+                <td>Nilai Rata Rata</td>
+                <td>: {{rata}}</td>
+            </tr>
+
+            <tr>
+                <td>Predikat</td>
+                <td colspan="2" id="keterangan">
+                    <span v-if="rata >= 90 && rata <= 100">A</span>
+                    <span v-else-if="rata >= 80 && rata<= 89">B</span>
+                    <span v-else-if="rata >= 70 && rata <= 79">C</span>
+                    <span v-else-if="rata >= 60 && rata <= 69">D</span>
+                    <span v-else="rata"><b>Belum Ada Nilai</b> </span>
+                </td>
+            </tr>
+            <!-- predikat -->
+
+            <!-- keterangan -->
+            <tr>
+                <td >Keterangan</td>
+                <td colspan="2" id="keterangan" >
+                    <span v-if="rata >= 70 && rata <= 100">LULUS</span>
+                    <span v-else="rata"><b>TIDAK LULUS</b> </span>
+                </td>
+            </tr>
+
+
+        </table>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
