@@ -1,31 +1,19 @@
-var app = new Vue ({
-    el : '#app',
-    data: {
-        nama:" ",
-        matematika : "",
-        fisika: "",
-        bindo: "",
-        pkn: "",
-        binggris: "",
-        barab: "",
-        biologi: "",
-        agamaislam: "",
-        it: "",
-        kimia: "",
+function insert(num) {
+    document.form.hasil.value = document.form.hasil.value + num;
+}
 
-
-    },
-    methods: {
-        
-        
-    }, 
-    computed: {
-        rata:function () {
-            return (parseFloat(this.matematika) + parseFloat(this.fisika) + parseFloat(this.bindo) + parseFloat(this.pkn)+ parseFloat(this.binggris) + parseFloat(this.barab)+ parseFloat(this.biologi) + parseFloat(this.agamaislam) + parseFloat(this.it) + parseFloat(this.kimia))/ 10; 
-        },
-        nama:function () {
-            return(this.nama);
-        },  
+function equal() {
+    const exp = document. form.hasil.value;
+    if(exp) {
+        document.form.hasil.value = eval(exp);
     }
+}
 
-})
+function clean() {
+    document.form.hasil.value= "";
+}
+
+function back() {
+    const exp = document.form.hasil.value;
+    document.form.hasil.value = exp.substring(0,exp.length-1);
+}

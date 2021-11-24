@@ -1,127 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&family=Raleway:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
     <script src="vue.js"></script>
     <link rel="stylesheet" href="style.css">
-    <title>data nilai</title>
+    <title>kalkulator</title>
 </head>
+
 <body>
+
+
+    <div class="nama">
+        <a href="https://nurillukluwatil.github.io/cv/" target="_blank">
+            <h2>This is My Project</h2>
+            <h4>Mahasiswa Studi Independen | PT Progate Global Indonesia</h4>
+            <img src="./me.jpg" alt="">
+        </a>
+
+        <p>Klik foto untuk melihat CV saya :)</p>
+
+        <hr>
+    </div>
+
     <div id="app">
 
-        <h2 id="data">Data Nilai Mahasiswi</h2>
+        <div class="garis"></div>
+        <form action="" name="form">
+            <input name="hasil" class="hasil" placeholder="hasil">
+        </form>
         <table>
             <tr>
-                <td>Masukkan Nama</td>
-                <td>
-                <input type="text" v-model="nama" placeholder="isi nama">
-                <p class="pesan-error" v-if="nama.length < 2">Masukkan Nama</p>
-                </td>              
-                
-            </tr>
-            <tr>
-                <td>Nilai Matematika</td>
-                <td>
-                <input type="number" v-model="matematika" placeholder="isi nilai">
-                <p class="pesan-error" v-if="matematika.length < 2">Masukkan Nilai</p>
-                </td>              
-                
+                <td><input type="button" class="button-tombol" value="C" onclick="clear()"></td>
+                <td><input type="button" class="button-tombol" value="del" onclick="back()"></td>
+                <td><input type="button" class="button-tombol" value="/" onclick="insert(' / ')"></td>
+                <td><input type="button" class="button-tmb" value="x" onclick="insert(' * ')"></td>
             </tr>
 
             <tr>
-                <td>Nilai Fisika</td>
-                <td><input type="number" v-model="fisika" placeholder="Isi Nilai">
-                <p class="pesan-error" v-if="fisika.length < 2">Masukkan Nilai</p>
-                </td></td>
-            </tr>
-            <tr>
-                <td>Nilai Bahasa Indonesia</td>
-                <td><input type="number" v-model="bindo" placeholder="Isi Nilai">
-                <p class="pesan-error" v-if="bindo.length < 2">Masukkan Nilai</p>
-                </td>
-            </tr>
-            <tr>
-                <td>Nilai PKN</td>
-                <td><input type="number" v-model="pkn" placeholder="Isi Nilai">
-                <p class="pesan-error" v-if="pkn.length < 2">Masukkan Nilai</p>
-                </td>
-            </tr>
-            <tr>
-                <td>Nilai Bahasa Inggris</td>
-                <td><input type="number" v-model="binggris" placeholder="Isi Nilai">
-                <p class="pesan-error" v-if="binggris.length < 2">Masukkan Nilai</p>
-                </td>
-            </tr>
-            <tr>
-                <td>Nilai Bahasa Inggris</td>
-                <td><input type="number" v-model="barab" placeholder="Isi Nilai">
-                <p class="pesan-error" v-if="barab.length < 2">Masukkan Nilai</p>
-                </td>
-            </tr>
-            <tr>
-                <td>Nilai Biologi</td>
-                <td><input type="number" v-model="biologi" placeholder="Isi Nilai">
-                <p class="pesan-error" v-if="biologi.length < 2">Masukkan Nilai</p>
-                </td>
-            </tr>
-            <tr>
-                <td>Nilai Agama Islam</td>
-                <td><input type="number" v-model="agamaislam" placeholder="Isi Nilai">
-                <p class="pesan-error" v-if="agamaislam.length < 2">Masukkan Nilai</p>
-                </td>
-            </tr>
-            <tr>
-                <td>Nilai IT</td>
-                <td><input type="number" v-model="it" placeholder="Isi Nilai">
-                <p class="pesan-error" v-if="it.length < 2">Masukkan Nilai</p>
-                </td>
-            </tr>
-            <tr>
-                <td>Nilai Kimia</td>
-                <td><input type="number" v-model="kimia" placeholder="Isi Nilai">
-                <p class="pesan-error" v-if="kimia.length < 2">Masukkan Nilai</p>
-                </td></td></td>
-            </tr>
-
-            <!-- nama -->
-            <tr>
-                <td>Nama Mahasiswa</td>
-                <td>{{nama}}</td>
-            </tr>
-
-            <!-- nilai rata-rata -->
-            <tr>
-                <td>Nilai Rata Rata</td>
-                <td>: {{rata}}</td>
+                <td><input type="button" class="button" value="7" onclick="insert(7)"></td>
+                <td><input type="button" class="button" value="8" onclick="insert(8)"></td>
+                <td><input type="button" class="button" value="9" onclick="insert(9)"></td>
+                <td><input type="button" class="button-tmb" value="-" onclick="insert(' - ')"></td>
             </tr>
 
             <tr>
-                <td>Predikat</td>
-                <td colspan="2" id="keterangan">
-                    <span v-if="rata >= 90 && rata <= 100">A</span>
-                    <span v-else-if="rata >= 80 && rata<= 89">B</span>
-                    <span v-else-if="rata >= 70 && rata <= 79">C</span>
-                    <span v-else-if="rata >= 60 && rata <= 69">D</span>
-                    <span v-else="rata"><b>Belum Ada Nilai</b> </span>
+                <td><input type="button" class="button" value="4" onclick="insert(4)"></td>
+                <td><input type="button" class="button" value="5" onclick="insert(5)"></td>
+                <td><input type="button" class="button" value="6" onclick="insert(6)"></td>
+                <td><input type="button" class="button-tmb" value="+" onclick="insert(' + ')"></td>
+            </tr>
+
+            <tr>
+                <td><input type="button" class="button" value="1" onclick="insert(1)"></td>
+                <td><input type="button" class="button" value="2" onclick="insert(2)"></td>
+                <td><input type="button" class="button" value="3" onclick="insert(3)"></td>
+                <td rowspan="5"><input type="button" class="button-tmb" value="=" onclick="equal()"
+                        style="height: 105px;">
                 </td>
             </tr>
-            <!-- predikat -->
 
-            <!-- keterangan -->
             <tr>
-                <td >Keterangan</td>
-                <td colspan="2" id="keterangan" >
-                    <span v-if="rata >= 70 && rata <= 100">LULUS</span>
-                    <span v-else="rata"><b>TIDAK LULUS</b> </span>
+                <td colspan="2"><input type="button" class="button" style="width: 100px;" value="0" onclick="insert(0)">
                 </td>
+                <td><input type="button" class="button" value="." onclick="insert('.')"></td>
             </tr>
 
 
         </table>
     </div>
-    
+
+    <div class="garis2"></div>
+
+    <div class="contact">
+        <a href="https://t.me/nurillj" class="fab fa-telegram" target="_blank"> | Telegram</a>
+        <a href="https://www.facebook.com/riyl.riyl.564/" class="fab fa-facebook-f" target="_blank"> | Facebook</a>
+        <a href="https://www.youtube.com/channel/UC1MyGLxjPaC8ewaammDzY7A/videos" class="fab fa-youtube"
+            target="_blank"> | Youtube</a>
+    </div>
     <script src="app.js"></script>
 </body>
+
 </html>
